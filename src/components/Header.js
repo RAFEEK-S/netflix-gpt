@@ -42,7 +42,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className=" flex justify-between items-center w-full absolute top-0 left-0 bg-gradient-to-b from-black px-4 ">
+    <div className=" flex justify-between items-center w-full absolute top-0 left-0 bg-gradient-to-b from-black px-4 z-40">
       <img
         className="w-44"
         src={LOGO}
