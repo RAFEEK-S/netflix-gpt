@@ -1,24 +1,24 @@
 import { useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
 import { useRef } from "react";
-
+import openai from "../utils/openai";
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
-  // const handleGptSearchClick = async () => {
-  //   console.log(searchText.current.value);
+  const handleGptSearchClick = async () => {
+    console.log(searchText.current.value);
 
-  //   const gptQuery =
-  //     "Act as a Movie Recommendation system and suggest some movies for the query :" +
-  //     searchText.current.value +
-  //     ".only give me names of 5 movies, comma separated like the example results given ahead. Example Result: Gadar,Sholay,Don,Golmaal,koi mil gaya ";
+    const gptQuery =
+      "Act as a Movie Recommendation system and suggest some movies for the query :" +
+      searchText.current.value +
+      ".only give me names of 5 movies, comma separated like the example results given ahead. Example Result: Gadar,Sholay,Don,Golmaal,koi mil gaya ";
 
-  //   const gptResults = await openai.chat.completions.create({
-  //     messages: [{ role: "user", content: gptQuery }],
-  //     model: "gpt-3.5-turbo",
-  //   });
-  //   console.log(gptResults.choices);
-  // };
+    const gptResults = await openai.chat.completions.create({
+      messages: [{ role: "user", content: gptQuery }],
+      model: "gpt-3.5-turbo",
+    });
+    console.log(gptResults.choices);
+  };
   return (
     <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2  ">
       <form
